@@ -40,3 +40,21 @@ SSH - сервис который позволяет делать удаленн
  Теперь установим утилиту pip для установки различных библиотек python -> `sudo apt-get install python3-pip`
  
  Для управления платой нам нужна библиотека GPIO Устанавливаем -> `sudo apt-get install rpi.gpio`
+
+Теперь можем написать полноценную программу для включения-выклбчения лампочки на плате
+
+     import RPi.GPIO as GPIO
+     import time
+     GPIO.setmode(GPIO.BCM)
+     GPIO.setwarnings(False)
+     GPIO.setup(17,GPIO.OUT)
+     i = 0
+     while (i < 10):
+       print("led on")
+       GPIO.output(17, GPIO.HIGH)
+       time.sleep(1)
+       print("led off")
+       GPIO.output(17, GPIO.LOW)
+       time.sleep(1)
+       i = i + 1
+    print("end")  
